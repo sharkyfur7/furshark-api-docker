@@ -49,7 +49,7 @@ async function notify(url: string, msg: string) {
 }
 
 app.get("/", (req, res): void => {
-  res.json("Hello, api!");
+  res.json("Hello, api! Now on a Raspberry Pi3!");
 });
 
 app.get("/guestbook", (req, res) => {
