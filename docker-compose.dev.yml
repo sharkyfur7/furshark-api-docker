@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  api:
+    platform: linux/arm64
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src:/app/src
+      - ./tsconfig.json:/app/tsconfig.json
+      - ./package.json:/app/package.json
+      - ./package-lock.json:/app/package-lock.json
+      - ./.env:/app/.env
+    environment:
+      - NODE_ENV=development
+    env_file:
+      - .env
+    command: sh -c "rm -rf node_modules && npm install && npm run dev"
